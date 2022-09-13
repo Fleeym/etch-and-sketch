@@ -1,11 +1,31 @@
 'use strict';
 
+const initalGridSize = 16;
 const container = document.querySelector('.grid');
-
-let gridSize = 16;
+const gridSizeInput = document.getElementById('gridSize');
+const changeGridButton = document.querySelector('.change-grid');
 
 // Initialize
-generateGrid(gridSize);
+generateGrid(initalGridSize);
+
+changeGridButton.addEventListener('click', () => {
+    const newGridSize = gridSizeInput.value;
+    if (newGridSize < 0 || newGridSize > 100) {
+        alert(
+            'Invalid grid size! The grid must be bigger than 0x0 and smaller than 100x100!'
+        );
+        return;
+    } else {
+        resetGrid();
+        generateGrid(newGridSize);
+    }
+});
+
+function resetGrid() {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
 
 function generateGrid(gridSize) {
     const containerSide = container.offsetWidth;
@@ -26,8 +46,4 @@ function generateGrid(gridSize) {
         });
         container.appendChild(pixel);
     }
-}
-
-function setGridSize(size) {
-    gridSize = size;
 }
