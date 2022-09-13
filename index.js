@@ -5,6 +5,8 @@ const container = document.querySelector('.grid');
 const gridSizeInput = document.getElementById('gridSize');
 const changeGridButton = document.querySelector('.change-grid');
 
+gridSizeInput.value = initalGridSize;
+
 // Initialize
 generateGrid(initalGridSize);
 
@@ -42,18 +44,8 @@ function generateGrid(gridSize) {
         const pixel = document.createElement('div');
         pixel.classList.add('grid-item');
         pixel.addEventListener('mouseenter', () => {
-            if (isRGBInput.value === 'on') {
+            if (isRGBInput.checked === true) {
                 setRGBBackground(pixel);
-            } else {
-                pixel.classList.add('hover');
-            }
-        });
-        pixel.addEventListener('mouseleave', () => {
-            if (isRGBInput.value === 'on') {
-                const defaultColor = getComputedStyle(
-                    document.documentElement
-                ).getPropertyValue('--background-secondary');
-                pixel.style.backgroundColor = defaultColor;
             } else {
                 pixel.classList.add('hover');
             }
@@ -77,6 +69,6 @@ function setRGBBackground(element) {
 
 function updateGridLabel(value) {
     const gridSizeInfo = document.querySelector('.info');
-    console.log(gridSizeInfo);
+
     gridSizeInfo.textContent = value;
 }
