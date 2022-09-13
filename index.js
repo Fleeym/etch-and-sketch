@@ -9,20 +9,20 @@ generateGrid(gridSize);
 
 function generateGrid(gridSize) {
     const containerSide = container.offsetWidth;
-    console.log(containerSide);
-    console.log(containerSide / gridSize);
     let sizes = '';
-    for (let i = 0; i < containerSide / gridSize; i++) {
-        sizes += gridSize + 'px ';
+    for (let i = 0; i < gridSize; i++) {
+        sizes += containerSide / gridSize + 'px ';
     }
-    console.log(sizes);
     container.style.gridTemplateColumns = sizes;
     container.style.gridTemplateRows = sizes;
     for (let i = 0; i < gridSize * gridSize; i++) {
         const pixel = document.createElement('div');
         pixel.classList.add('grid-item');
         pixel.addEventListener('mouseenter', () => {
-            pixel.classList.add = 'hover';
+            pixel.classList.add('hover');
+        });
+        pixel.addEventListener('mouseleave', () => {
+            pixel.classList.remove('hover');
         });
         container.appendChild(pixel);
     }

@@ -48,13 +48,17 @@ h1 {
 }
 
 .grid-item {
+    transition: 0.1s linear all;
     background-color: var(--background-secondary);
 }
 
+.hover {
+    background-color: red;
+    transition: none;
+}
+
 .grid {
-    min-width: 500px;
-    min-height: 500px;
-    max-width: fit-content;
-    max-height: fit-content;
+    width: 500px;
+    height: 500px;
     display: grid;
 }
