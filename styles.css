@@ -1,3 +1,60 @@
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
+}
+
+:root {
+    --background-primary: #e2e8f0;
+    --background-secondary: #f9fafb;
+
+    --text-primary: #334155;
+}
+
+body {
+    min-height: 100vh;
+}
+
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    color: var(--text-primary);
+    font-size: 3rem;
+}
+
+.container {
+    padding: 0 10vw;
+    min-height: 100vh;
+    background-color: var(--background-primary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item {
+    background-color: var(--background-secondary);
+}
+
+.grid {
+    min-width: 500px;
+    min-height: 500px;
+    max-width: fit-content;
+    max-height: fit-content;
+    display: grid;
 }
