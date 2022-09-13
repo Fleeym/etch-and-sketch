@@ -31,6 +31,7 @@ function resetGrid() {
 
 function generateGrid(gridSize) {
     const containerSide = container.offsetWidth;
+    const isRGBInput = document.getElementById('isRgb');
     let sizes = '';
     for (let i = 0; i < gridSize; i++) {
         sizes += containerSide / gridSize + 'px ';
@@ -41,13 +42,37 @@ function generateGrid(gridSize) {
         const pixel = document.createElement('div');
         pixel.classList.add('grid-item');
         pixel.addEventListener('mouseenter', () => {
-            pixel.classList.add('hover');
+            if (isRGBInput.value === 'on') {
+                setRGBBackground(pixel);
+            } else {
+                pixel.classList.add('hover');
+            }
         });
         pixel.addEventListener('mouseleave', () => {
-            pixel.classList.remove('hover');
+            if (isRGBInput.value === 'on') {
+                const defaultColor = getComputedStyle(
+                    document.documentElement
+                ).getPropertyValue('--background-secondary');
+                pixel.style.backgroundColor = defaultColor;
+            } else {
+                pixel.classList.add('hover');
+            }
         });
         container.appendChild(pixel);
     }
+}
+
+function setRGBBackground(element) {
+    let newColor = 'rgb(';
+    for (let i = 0; i < 3; i++) {
+        let rgb = Math.random() * 255;
+        if (i === 2) {
+            newColor += rgb + ')';
+        } else {
+            newColor += rgb + ', ';
+        }
+    }
+    element.style.backgroundColor = newColor;
 }
 
 function updateGridLabel(value) {

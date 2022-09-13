@@ -12,8 +12,10 @@ h6 {
     --background-primary: #e2e8f0;
     --background-secondary: #f9fafb;
     --background-button: #38bdf8;
+    --background-button-hover: #0284c7;
 
     --text-primary: #334155;
+    --text-button: #e2e8f0;
 }
 
 body {
@@ -51,15 +53,18 @@ h1 {
 
 .toolbar > button {
     background-color: var(--background-button);
+    color: var(--text-button);
+    font-weight: 600;
     border: none;
     border-radius: 4px;
-    padding: 0.5rem;
+    padding: 1rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: 0.1s ease-in-out;
 }
 
 .toolbar > button:hover {
-    color: white;
+    background-color: var(--background-button-hover);
     transform: scale(1.05);
 }
 
@@ -78,7 +83,8 @@ h1 {
     transition: none;
 }
 
-.grid-size-input {
+.grid-size-input,
+.rgb-input {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
