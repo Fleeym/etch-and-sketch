@@ -10,7 +10,8 @@ generateGrid(initalGridSize);
 
 changeGridButton.addEventListener('click', () => {
     const newGridSize = gridSizeInput.value;
-    if (newGridSize < 0 || newGridSize > 100) {
+    console.log(newGridSize);
+    if (newGridSize < 0 || newGridSize > 100 || newGridSize === '') {
         alert(
             'Invalid grid size! The grid must be bigger than 0x0 and smaller than 100x100!'
         );
@@ -18,6 +19,7 @@ changeGridButton.addEventListener('click', () => {
     } else {
         resetGrid();
         generateGrid(newGridSize);
+        updateGridLabel(newGridSize);
     }
 });
 
@@ -46,4 +48,10 @@ function generateGrid(gridSize) {
         });
         container.appendChild(pixel);
     }
+}
+
+function updateGridLabel(value) {
+    const gridSizeInfo = document.querySelector('.info');
+    console.log(gridSizeInfo);
+    gridSizeInfo.textContent = value;
 }

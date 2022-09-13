@@ -63,6 +63,11 @@ h1 {
     transform: scale(1.05);
 }
 
+.toolbar > .grid-size-input > #gridSize {
+    min-height: 1.5rem;
+    padding: 0.3rem;
+}
+
 .grid-item {
     transition: 0.1s linear all;
     background-color: var(--background-secondary);
@@ -83,4 +88,13 @@ h1 {
     width: 500px;
     height: 500px;
     display: grid;
+}
+
+.info-container {
+    display: flex;
+    font-weight: bold;
+}
+
+.info {
+    color: red;
 }
